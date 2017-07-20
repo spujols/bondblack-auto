@@ -12,32 +12,54 @@ import base64
 from time import sleep
 import pandas as pd
 
+
 def redirect_login():
-#     orders()
-#     cancellations()
-#     drafts()
-#     customers()
-#     membership_requests()
-#     dashboard()
-#     admins()
-#     file_exports()
-#     reporting()
-#     samples()
-#     create()
+    get_url()#Do not comment this line else URL cannot be selected.
+    id()#Extracting every id from portal and saving it to .csv file "customer_ids.csv"
+    
+    #orders()
+    #cancellations()
+    #drafts()
+    #customers()
+    #membership_requests()
+    #dashboard()
+    #admins()
+    #file_exports()
+    #reporting()
+    #samples()
+    #create_sample()
+    #jobs_log()
     
     #Customers Sub tabs
-    id()
-    basic_info()
-    onboarding()
-    addresses()
-    messages()
-    occasions()
-    charges() 
+    #basic_info()
+    #onboarding()
+    #addresses()
+    #messages()
+    #occasions()
+    #charges() 
     
-    
+def get_url():
+    global url2 #By using global to declare variable url2 becomes available thru any function in any part of the script.
+    theurl=raw_input('Which environment will you be using:\na)Dev \nb)Staging\nc)Production\nInput letter: ')
+    url1='bondblack.bondco.io/portal'
+    urlp='https://bondblack.com/portal'
+    if theurl=='a':
+        url2='https://'+'dev-'+url1
+        print 'User will be directed to Dev url',url2
+    elif theurl=='b':
+        url2='https://'+'stg-'+url1
+        print 'User will be directed to Stg url',url2
+    elif theurl=='c':
+        url2=urlp
+        print 'User will be directed to Production url',url2
+    return url2   
+    #quit()
 def orders():
+
     with Browser ('chrome',incognito=True, fullscreen=False) as browser:
-        url='https://dev-bondblack.bondco.io/portal/orders'
+        
+        url=url2+'/orders'
+        #url='https://dev-bondblack.bondco.io/portal/orders'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password', base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -48,9 +70,10 @@ def orders():
             print "User successfully redirected to Orders section"
         
         sleep(2)
+   
 def cancellations():
     with Browser ('chrome',incognito=True, fullscreen=False) as browser:
-        url='https://dev-bondblack.bondco.io/portal/orders/cancellations'
+        url=url2+'/orders/cancellations'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password', base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -63,7 +86,7 @@ def cancellations():
 
 def drafts():
     with Browser ('chrome',incognito=True, fullscreen=False) as browser:
-        url='https://dev-bondblack.bondco.io/portal/orders/drafts'
+        url=url2+'/orders/drafts'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password', base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -77,7 +100,7 @@ def drafts():
 
 def customers():
     with Browser ('chrome',incognito=True, fullscreen=False) as browser:
-        url='https://dev-bondblack.bondco.io/portal/customers'
+        url=url2+'/customers'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password',base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -90,7 +113,7 @@ def customers():
 
 def membership_requests():
     with Browser ('chrome',incognito=True, fullscreen=False) as browser:
-        url='https://dev-bondblack.bondco.io/portal/membership_requests'
+        url=url2+'/membership_requests'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password',base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -104,7 +127,7 @@ def membership_requests():
 
 def dashboard():
     with Browser ('chrome',incognito=True, fullscreen=False) as browser:
-        url='https://dev-bondblack.bondco.io/portal/dashboard'
+        url=url2+'/dashboard'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password',base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -117,7 +140,7 @@ def dashboard():
 
 def admins():
     with Browser ('chrome',incognito=True, fullscreen=False) as browser:
-        url='https://dev-bondblack.bondco.io/portal/admins'
+        url=url2+'/admins'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password',base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -131,7 +154,7 @@ def admins():
 
 def file_exports():
     with Browser ('chrome',incognito=True, fullscreen=False) as browser:
-        url='https://dev-bondblack.bondco.io/portal/file-exports'
+        url=url2+'/file-exports'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password',base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -144,7 +167,7 @@ def file_exports():
         
 def reporting():
     with Browser ('chrome',incognito=True, fullscreen=False) as browser:
-        url='https://dev-bondblack.bondco.io/portal/reporting'
+        url=url2+'/reporting'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password',base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -157,7 +180,7 @@ def reporting():
 
 def samples():
     with Browser ('chrome',incognito=True, fullscreen=False) as browser:
-        url='https://dev-bondblack.bondco.io/portal/samples'
+        url=url2+'/samples'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password',base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -170,9 +193,9 @@ def samples():
 
 
 
-def create():
+def create_sample():
     with Browser ('chrome',incognito=True, fullscreen=False) as browser:
-        url='https://dev-bondblack.bondco.io/portal/samples/create'
+        url=url2+'/samples/create'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password',base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -183,13 +206,25 @@ def create():
             print "User successfully redirected to Samples Creation section"
         sleep(2)
 
+def jobs_log():
+    with Browser ('chrome',incognito=True, fullscreen=False) as browser:
+        url=url2+'/jobs-log'
+        browser.visit(url)
+        browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
+        browser.fill('password',base64.b64decode("RGFzaGJvYXJkMQ=="))
+        browser.find_by_xpath("html/body/div[2]/div[2]/button").click()
+        #After logging user must be taken to Jobs Log section
+        url1=browser.url
+        if url1==url:
+            print "User successfully redirected to Jobs Log section"
+        sleep(2)
 
 
 
 #Getting Customers Id 
 def id():
     with Browser ('chrome', incognito=True, fullscreen=False) as browser:
-        url='http://dev-bondblack.bondco.io/portal/customers'
+        url=url2+'/customers'
         browser.visit(url)
         browser.fill('email',base64.b64decode("c2lnZnJpZG8ucHVqb2xzQGJvbmQuY28="))
         browser.fill('password',base64.b64decode("RGFzaGJvYXJkMQ=="))
@@ -203,7 +238,7 @@ def id():
         #print usrid1# List of all current Ids (Each id correspond to existing customers in portal)
         rndid=random.choice(usrid1)
         #print 'Id to use is',rndid
-        url22='http://dev-bondblack.bondco.io/portal/customer?id='+rndid
+        url22=url2+'/customer?id='+rndid
         browser.visit(url22)
         sleep(1)
         stat=browser.find_by_name('status').value
@@ -220,15 +255,22 @@ def id():
         
 
         now = datetime.datetime.now()# Variable for timestamp
-        
+        env=browser.url[8:11]
+        if env=='stg':
+            env='Staging'
+        if env=='dev':
+            env='Development'
+        if env=='bon':
+            env='Production'
+        print 'Current environment is',env
         #Adding Headers to .CSV file
         usrid_exist = os.path.isfile('customers_ids.csv')
         
         if not usrid_exist:#Creating .csv file if it doesnt exist
             with open('customers_ids.csv', 'wb') as ids:
 
-                fieldnames = ['#', 'user_id','customer_name','date_added']
-                writer = csv.DictWriter(ids, fieldnames=fieldnames)
+                fieldnames = ['#', 'user_id','customer_name','date_added','environment']
+                writer = csv.DictWriter(ids, fieldnames=fieldnames,lineterminator='\n')
                 writer.writeheader()
     
             # Counting Ids for .CSV list
@@ -245,9 +287,9 @@ def id():
 
         #Adding data to existing .csv
         with open('customers_ids.csv', "a") as ids:
-            fieldnames = ['#', 'user_id','customer_name','date_added']
-            writer = csv.DictWriter(ids, fieldnames=fieldnames)                
-            writer.writerow({'#': count, 'user_id': rndid,'customer_name': nam,'date_added': now.strftime("%Y-%m-%d %H:%M")})
+            fieldnames = ['#', 'user_id','customer_name','date_added','environment']
+            writer = csv.DictWriter(ids, fieldnames=fieldnames,lineterminator='\n')                
+            writer.writerow({'#': count, 'user_id': rndid,'customer_name': nam,'date_added': now.strftime("%Y-%m-%d %H:%M"),'environment':env})
         
     #quit()
 
@@ -266,7 +308,7 @@ def basic_info():
         #print rndusrid   
 
         #Going into url with for Random user id   
-        url='http://dev-bondblack.bondco.io/portal/customer/basic-info?id='+rndusrid
+        url=url2+'/customer/basic-info?id='+rndusrid
         print 'Full URL is',url
         browser.visit(url)
         sleep(1)
@@ -312,7 +354,7 @@ def onboarding():
         #print usrid_column # Use to view content of .csv column listed and counted
         rndusrid=random.choice(usrid_column)
         
-        url='http://dev-bondblack.bondco.io/portal/customer/onboarding?id='+rndusrid
+        url=url2+'/customer/onboarding?id='+rndusrid
         print 'Full URL is',url
         browser.visit(url)
         sleep(1)
@@ -358,7 +400,7 @@ def addresses():
         #print usrid_column # Use to view content of .csv column listed and counted
         rndusrid=random.choice(usrid_column)
         
-        url='http://dev-bondblack.bondco.io/portal/customer/addresses?id='+rndusrid
+        url=url2+'/customer/addresses?id='+rndusrid
         print 'Full URL is',url
         browser.visit(url)
         sleep(1)
@@ -403,7 +445,7 @@ def messages():
         #print usrid_column # Use to view content of .csv column listed and counted
         rndusrid=random.choice(usrid_column)
         
-        url='http://dev-bondblack.bondco.io/portal/customer/messages?id='+rndusrid
+        url=url2+'/customer/messages?id='+rndusrid
         print 'Full URL is',url
         browser.visit(url)
         sleep(1)
@@ -449,7 +491,7 @@ def occasions():
         #print usrid_column # Use to view content of .csv column listed and counted
         rndusrid=random.choice(usrid_column)
         
-        url='http://dev-bondblack.bondco.io/portal/customer/occasions?id='+rndusrid
+        url=url2+'/customer/occasions?id='+rndusrid
         print 'Full URL is',url
         browser.visit(url)
         sleep(1)
@@ -494,7 +536,7 @@ def charges():
         #print usrid_column # Use to view content of .csv column listed and counted
         rndusrid=random.choice(usrid_column)
         
-        url='http://dev-bondblack.bondco.io/portal/customer/charges?id='+rndusrid
+        url=url2+'/customer/charges?id='+rndusrid
         print 'Full URL is',url
         browser.visit(url)
         sleep(1)
